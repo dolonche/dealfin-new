@@ -1,0 +1,49 @@
+.page-header {
+  @extend %container;
+  @extend %grid-padding;
+  font-family: "Roboto";
+  background-color: #222;
+  width: 100vw;
+  display: flex;
+  &__logo {
+    width: 130px;
+    &-image {
+      width: 100%;
+    }
+  }
+}
+
+.red {
+  background-color: red;
+  width: 100vw;
+  height: 100vh;
+}
+
+.blue {
+  background-color: blue;
+  width: 100vw;
+  height: 100vh;
+}
+
+.transition,
+.uMenuRoot span,
+.fancybox-prev:before,
+.fancybox-next:before,
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+input[type="text"],
+input[type="password"],
+textarea {
+  transition: All .3619s ease;
+  -webkit-transition: All .3619s ease;
+  -moz-transition: All .3619s ease;
+  -o-transition: All .3619s ease;
+}
+
+@media #{$tablet-widths} {
+  header {
+    background-color: midnightblue;
+  }
+}

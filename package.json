@@ -9,6 +9,7 @@
 		"gulp": "gulp"
 	},
 	"devDependencies": {
+		"barba.js": "^1.0.0",
 		"gulp": "latest",
 		"gulp-autoprefixer": "latest",
 		"gulp-connect": "^5.2.0",

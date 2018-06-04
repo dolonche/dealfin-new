@@ -1,0 +1,34 @@
+.page-footer {
+  &__wrapper {
+    background-color: #222;
+  }
+  @extend %grid-padding;
+  max-width: 1500px;
+  display: flex;
+  justify-content: space-between;
+  &__logo {
+    width: 130px;
+    img {
+      width: 100%;
+    }
+  }
+  &__tel,
+  &__mail {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    margin-bottom: auto;
+    a {
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 2px solid #2D6FEC;
+      transition: 0.4s all;
+      &:hover {
+        border-color: transparent;
+      }
+    }
+  }
+  &__mail{
+    margin-right: 30px;
+  }
+}
