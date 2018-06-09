@@ -1,9 +1,9 @@
 .feedback-form__wrapper {
-  @extend %container;
+  padding-left: 40px;
+  padding-right: 40px;
   box-sizing: border-box;
-  padding-left: 15px;
-  padding-right: 15px;
 }
+
 
 .feedback-form {
   color: #000;
