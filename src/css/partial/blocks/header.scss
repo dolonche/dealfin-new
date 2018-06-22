@@ -13,18 +13,6 @@
   }
 }
 
-.red {
-  background-color: red;
-  width: 100vw;
-  height: 100vh;
-}
-
-.blue {
-  background-color: blue;
-  width: 100vw;
-  height: 100vh;
-}
-
 .transition,
 .uMenuRoot span,
 .fancybox-prev:before,
@@ -42,8 +30,4 @@ textarea {
   -o-transition: All .3619s ease;
 }
 
-@media #{$tablet-widths} {
-  header {
-    background-color: midnightblue;
-  }
-}
+@media #{$tablet-widths} {}

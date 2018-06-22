@@ -24,16 +24,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   Barba.Pjax.getTransition = function () {
     return e
-  }, Barba.Dispatcher.on("initStateChange", function (e, a) {
-    $("#barba-wrapper").addClass("transition"), $(".header .uMenuRoot a").click(function () {
-      $(".header .uMenuRoot a").removeClass("uMenuItemA"), $(this).addClass("uMenuItemA")
-    })
+  }, Barba.Dispatcher.on('initStateChange', function (e, a) {
+    $("#barba-wrapper").addClass("transition")
   }), Barba.Dispatcher.on("transitionCompleted", function (e) {
-    $("#barba-wrapper").removeClass("transition"), window.scrollTo(0, wrapper.getBoundingClientRect().top)
-  }), Barba.Dispatcher.on("newPageReady", function (e, a, n, t) {
-    var i = $("<head />").html($.parseHTML(t.match(/<head[^>]*>([\s\S.]*)<\/head>/i)[0], document, !0)),
-      r = ["script[src*='uutils.fcg']", "meta[name='keywords']", "meta[name='description']", "meta[property^='og']", "meta[name^='twitter']", "meta[itemprop]", "link[itemprop]", "link[rel='prev']", "link[rel='next']", "link[rel='canonical']"].join(",");
-    $("head").find(r).remove(), i.find(r).appendTo("head")
+    $("#barba-wrapper").removeClass("transition")
   }), Barba.Pjax.originalPreventCheck = Barba.Pjax.preventCheck, Barba.Pjax.preventCheck = function (e, a) {
     return !!Barba.Pjax.originalPreventCheck(e, a) && (!/.pdf/.test(a.href.toLowerCase()) && !(a.href > -1))
   }
