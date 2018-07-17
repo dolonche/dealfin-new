@@ -30,4 +30,27 @@ textarea {
   -o-transition: All .3619s ease;
 }
 
-@media #{$tablet-widths} {}
+@media #{$tablet-widths} {
+  .page-header {
+    font-size: 13px;
+    width: 100%;
+    &__logo {
+      width: 100px;
+    }
+  }
+}
+
+@media #{$mobile-widths} {
+  .page-header {
+    position: relative;
+    &__logo {
+      &-image {
+        height: 100%;
+        width: auto;
+        transform: scale(4);
+        margin-top: -42px;
+        margin-left: 20px;
+      }
+    }
+  }
+}

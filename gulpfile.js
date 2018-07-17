@@ -19,6 +19,7 @@ var path = {
   build: { //Тут мы укажем куда складывать готовые после сборки файлы
     html: 'build/',
     js: 'build/js/',
+    jsVendor: 'build/jsVendor/',
     css: 'build/css/',
     img: 'build/css/images/',
     fonts: 'build/fonts/',
@@ -28,6 +29,7 @@ var path = {
   src: { //Пути откуда брать исходники
     html: 'src/template/*.html', //Синтаксис src/template/*.html говорит gulp что мы хотим взять все файлы с расширением .html
     js: 'src/js/[^_]*.js', //В стилях и скриптах нам понадобятся только main файлы
+    jsVendor: 'src/jsVendor/[^_]*.js',
     css: 'src/css/styles.scss',
     cssVendor: 'src/css/vendor/*.*', //Если мы хотим файлы библиотек отдельно хранить то раскоментить строчку
     img: 'src/css/images/**/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
@@ -38,6 +40,7 @@ var path = {
   watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
     html: 'src/template/**/*.html',
     js: 'src/js/**/*.js',
+    jsVendor: 'src/jsVendor/**/*.js',
     css: 'src/css/**/*.*',
     img: 'src/css/images/**/*.*',
     contentImg: 'src/img/**/*.*',
@@ -108,16 +111,20 @@ gulp.task('js:build', function () {
     })) //добавим суффикс .min к выходному файлу
     .pipe(gulp.dest(path.build.js)) //выгрузим готовый файл в build
     .pipe(connect.reload()) //И перезагрузим сервер
+  gulp.src(path.src.jsVendor)
+    .pipe(sourcemaps.init())
+    .pipe(gulp.dest(path.build.jsVendor)) //выгрузим готовый файл в build
+    .pipe(connect.reload()) //И перезагрузим сервер
 });
 // билдинг домашнего css
 gulp.task('cssOwn:build', function () {
   gulp.src(path.src.css) //Выберем наш основной файл стилей
     .pipe(sourcemaps.init()) //инициализируем soucemap
     .pipe(sass().on('error', function () {
-    gulp.src(path.src.css)
-    .pipe(notify("🤔🤔🤔🤔🤔")) //уведомление об ошибке
-    .pipe(sass().on('error', sass.logError )) //Скомпилируем sass
-}))
+      gulp.src(path.src.css)
+        .pipe(notify("🤔🤔🤔🤔🤔")) //уведомление об ошибке
+        .pipe(sass().on('error', sass.logError)) //Скомпилируем sass
+    }))
     .pipe(prefixer({
       browsers: ['last 3 version', "> 1%", "ie 8", "ie 7"]
     })) //Добавим вендорные префиксы
@@ -143,7 +150,7 @@ gulp.task('cssVendor:build', function () {
 // билдим css целиком
 gulp.task('css:build', [
     'cssOwn:build',
-    // 'cssVendor:build'
+     'cssVendor:build'
 ]);
 
 // билдим шрифты

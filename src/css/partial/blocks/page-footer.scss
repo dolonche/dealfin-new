@@ -32,3 +32,15 @@
     margin-right: 30px;
   }
 }
+@media #{$mobile-widths} {
+  .page-footer{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    &__logo{
+      display: none;
+    }
+    &__mail{
+      margin-right: 0;
+    }
+  }
+}

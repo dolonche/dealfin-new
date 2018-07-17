@@ -6,50 +6,81 @@
   <title>Document</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/styles.min.css">
+  <link href="css/desktop.css" rel="stylesheet">
+  <link href="css/mobile.css" rel="stylesheet">
+  <script src="jsVendor/jquery-1.10.2.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+  <script src="jsVendor/Site.js"></script>
+  <script src="jsVendor/DataManager.js"></script>
+  <script src="jsVendor/ModelManager.js"></script>
+  <script src="jsVendor/CanvasManager.js"></script>
+  <script src="jsVendor/gl-matrix.js"></script>
+  <script src="jsVendor/Camera.js"></script>
+  <script src="jsVendor/Program.js"></script>
+  <script src="jsVendor/ProgramManager.js"></script>
+  <script src="jsVendor/TextureManager.js"></script>
+  <script src="jsVendor/PointGlobeDrawable.js"></script>
+  <script src="jsVendor/NebulaDrawable.js"></script>
+  <script src="jsVendor/BokehDrawable.js"></script>
+  <script src="jsVendor/BackgroundDrawable.js"></script>
+  <script src="jsVendor/RingDrawable.js"></script>
+  <script src="jsVendor/EarthquakeDrawable.js"></script>
+  <script src="jsVendor/BigQuakeDrawable.js"></script>
+  <script src="jsVendor/Model.js"></script>
+  <script src="jsVendor/LatLng.js"></script>
+  <script src="jsVendor/ProjectionUtil.js"></script>
+  <script src="jsVendor/Animation.js"></script>
+  <script src="jsVendor/Ease.js"></script>
+  <script src="jsVendor/Ajax.js"></script>
+  <script src="jsVendor/Signal.js"></script>
+  <script src="jsVendor/SplitText.js"></script>
+  <script src="jsVendor/TweenMax.js"></script>
+  <!-- ###EndUncompressedJS### -->
+  <!-- ###BeginCompressedJS### -->
+  <!--<script src="/static/minified/globekit-js.min.min.js"></script>-->
+  <!-- ###EndCompressedJS### -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,500&amp;subset=latin" media="all">
 </head>
 
 <body class="page">
-  <!--
   <header class="page-header">
-    <div class="page-header__logo"><img src="img/logo.svg" alt="" class="page-header__logo-image"></div>
-    <nav class="main-nav">
+    <div class="page-header__logo">
+      <picture>
+        <source media="(max-width: 768px)" srcset="img/logomobile.svg">
+        <img src="img/logo.svg" alt="" class="page-header__logo-image"></picture>
+    </div>
+    <nav class="main-nav main-nav--closed">
+      <button class="main-nav__toggle" type="button">Открыть меню</button>
       <ul class="main-nav__list">
         <li class="main-nav__list-item">
           <a href="index.html">Интернет-магазинам</a>
         </li>
         <li class="main-nav__list-item">
-          <a href="about.html">Диджитал-агенствам</a>
+          <a href="digital.html">Диджитал-агенствам</a>
         </li>
         <li class="main-nav__list-item">
-          <a href="about.html">Инвестиционным команиям</a>
+          <a href="invest.html">Инвестиционным команиям</a>
         </li>
       </ul>
     </nav>
-  </header>-->
+  </header>
+<!--
   <section id="barba-wrapper">
-    <header class="page-header">
-      <div class="page-header__logo"><img src="img/logo.svg" alt="" class="page-header__logo-image"></div>
-      <nav class="main-nav">
-        <ul class="main-nav__list">
-          <li class="main-nav__list-item">
-            <a href="index.html">Интернет-магазинам</a>
-          </li>
-          <li class="main-nav__list-item">
-            <a href="digital.html">Диджитал-агенствам</a>
-          </li>
-          <li class="main-nav__list-item">
-            <a href="invest.html">Инвестиционным команиям</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
     <div class="barba-container middle animated fadeInRight">
+-->
       <div class="screen__wrapper">
         <section class="screen">
+
           <div class="screen__title">
             DealFin - оплата всеми способами на вашем сайте уже сегодня
           </div>
           <a href="#" class="screen__mouse" onclick="$('#section-1').animatescroll();"><img src="img/mouse.svg" alt=""></a>
+
+          <div id="quake-info" style="transform: translate3d(405.44px, 571.842px, 0px);">
+            <div><span class="in"><strong></strong></span></div>
+          </div>
+
+          <canvas id="globekit-canvas" width="965" height="1460"></canvas>
         </section>
       </div>
       <div class="title-section" id="section-1">Плюсы работы с нами</div>
@@ -163,8 +194,10 @@
           </div>
         </section>
       </div>
+<!--
     </div>
   </section>
+-->
   <div class="page-footer__wrapper">
     <footer class="page-footer">
       <div class="page-footer__logo">
@@ -178,6 +211,57 @@
       </div>
     </footer>
   </div>
+  <script>
+    $('#PHONE').inputmask('+7(999)999-99-99');
+
+    Site.init();
+
+    WebFontConfig = {
+      google: {
+        families: ["Roboto:100,300,500:latin"]
+      },
+      /* Called when all the specified web-font provider modules (google, typekit, and/or custom) have reported that they have started loading fonts. */
+      loading: function() {
+        // do something
+      },
+      /* Called when each requested web font has started loading. The fontFamily parameter is the name of the font family, and fontDescription represents the style and weight of the font. */
+      fontloading: function(fontFamily, fontDescription) {
+        // do something
+      },
+      /* Called when each requested web font has finished loading. The fontFamily parameter is the name of the font family, and fontDescription represents the style and weight of the font. */
+      fontactive: function(fontFamily, fontDescription) {
+        // do something
+      },
+      /* Called if a requested web font failed to load. The fontFamily parameter is the name of the font family, and fontDescription represents the style and weight of the font. */
+      fontinactive: function(fontFamily, fontDescription) {
+        // do something
+      },
+      /* Called when all of the web fonts have either finished loading or failed to load, as long as at least one loaded successfully. */
+      active: function() {
+        setTimeout(function() {
+          Site.fontsDidActivate();
+        }, 250);
+      },
+      /* Called if the browser does not support web fonts or if none of the fonts could be loaded. */
+      inactive: function() {
+        setTimeout(function() {
+          Site.fontsDidActivate();
+        }, 250);
+      }
+    };
+  </script>
+
+  <!-- Self hosting this part, for Ghostery's sake -->
+  <script src="jsVendor/WebFontLoader.js"></script>
+  <style id="extraClass">
+    .extraClassAspect {
+      -webkit-transform: scaleX(1)!important;
+    }
+
+    .extraClassCrop {
+      -webkit-transform: scale(1)!important;
+    }
+  </style>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script>
   <script src="js/wow.min.js"></script>

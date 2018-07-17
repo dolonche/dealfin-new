@@ -40,3 +40,19 @@
     }
   }
 }
+@media #{$tablet-widths} {
+  .advantages{
+    &__item{
+      font-size: 16px;
+    }
+  }
+}
+@media #{$mobile-widths} {
+  .advantages{
+    &__item{
+      font-size: 14px;
+      margin-top: 13px;
+      margin-bottom: 13px;
+    }
+  }
+}

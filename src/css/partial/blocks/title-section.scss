@@ -1,11 +1,19 @@
-.title-section{
+.title-section {
   text-align: center;
   font-weight: lighter;
   font-size: 30px;
   background-color: #f1f1f1;
   padding-top: 30px;
   padding-bottom: 30px;
-  &--white{
+  &--white {
     background-color: #fff;
+  }
+}
+
+@media #{$mobile-widths} {
+  .title-section {
+    font-size: 24px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
